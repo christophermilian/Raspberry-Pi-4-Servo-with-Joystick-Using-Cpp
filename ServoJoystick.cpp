@@ -30,7 +30,7 @@ void servoWriteMS(int pin, int ms){     // Specify the unit for pulse (5-25ms) w
 
 int main(void){
     adc = new ADCDevice();
-    printf("Program is starting ... \n");
+    printf("Looking for ADC Device.\n");
     
     if(adc->detectI2C(0x48)){   // Detect the pcf8591.
         delete adc;             // Free previously pointed memory
