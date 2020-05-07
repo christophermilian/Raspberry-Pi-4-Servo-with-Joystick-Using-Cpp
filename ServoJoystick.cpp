@@ -10,18 +10,18 @@ Completed: 5/6/2020
 #include <softPwm.h>
 #include <ADCDevice.hpp>
 
-#define OFFSET_MS 3                  // Define the unit of servo pulse offset: 0.1ms
-#define SERVO_MIN_MS 0//+OFFSET_MS   // Define the pulse duration for minimum angle of servo
-#define SERVO_MAX_MS 28//+OFFSET_MS  // Define the pulse duration for maximum angle of servo
-#define servoPin 0                   // Define the GPIO number connected to servo
-#define Z_Pin 1                      // Define pin for axis Z
-ADCDevice *adc;                      // Define an ADC Device class object
+
+#define SERVO_MIN_MS 0   // Define the pulse duration for minimum angle of servo
+#define SERVO_MAX_MS 28  // Define the pulse duration for maximum angle of servo
+#define servoPin 0       // Define the GPIO number connected to servo
+#define Z_Pin 1          // Define pin for Z-axis 
+ADCDevice *adc;          // Define an ADC Device class object
 
 void servoInit(int pin){         // Initialization function for servo PMW pin
     softPwmCreate(pin, 0, 200);  // Using pin 0 (GPIO 17), position 0 degrees, and pmwRange of 200 (20ms)
 }
 void servoWriteMS(int pin, int ms){     // Specify the unit for pulse (5-25ms) with specific duration output by servo pin: 0.1ms
-    if(ms > SERVO_MAX_MS)                  // In other words, set the rotation limits to prevent going past the physical capabilities of the servo
+    if(ms > SERVO_MAX_MS)               // In other words, set the rotation limits to prevent going past the physical capabilities of the servo
         ms = SERVO_MAX_MS;
     if(ms < SERVO_MIN_MS)
         ms = SERVO_MIN_MS;
@@ -34,11 +34,11 @@ int main(void){
     
     if(adc->detectI2C(0x48)){   // Detect the pcf8591.
         delete adc;             // Free previously pointed memory
-        adc = new PCF8591();    // If detected, create an instance of PCF8591.
+        adc = new PCF8591();    // If detected, create an instance of PCF8591
     }
     else if(adc->detectI2C(0x4b)){  // Detect the ads7830
         delete adc;                 // Free previously pointed memory
-        adc = new ADS7830();        // If detected, create an instance of ADS7830.
+        adc = new ADS7830();        // If detected, create an instance of ADS7830
     }
     else{
         printf("No correct I2C address found, \n"
