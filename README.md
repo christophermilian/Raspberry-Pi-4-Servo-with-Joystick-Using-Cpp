@@ -1,7 +1,6 @@
 # Moving a Micro Servo with a Joystick Using C++ and a Raspberry Pi 4B 
 
-Project based on C++ that uses a Raspberry Pi 4B Rev. 1.2 board to move a micro servo with a joystick. 
-It is one of many to come projects I intend to explore to expand my skills in coding and electronics. 
+A project based on C++ that uses a Raspberry Pi 4B Rev. 1.2 board to move a micro servo with a joystick. 
 For GPIO pin mapping, I used WiringPi (Made by Gordon Henderson under GNU-LGPL) to simplify. 
 Link: http://wiringpi.com/
 
