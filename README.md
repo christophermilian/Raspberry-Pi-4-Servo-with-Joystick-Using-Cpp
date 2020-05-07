@@ -13,7 +13,7 @@ Hardware components used:
 - (1) ADC Module (PCF8591)
 - (3) 10K Resistors
 - (1) Breadboard
-- Jumper Cables
+- (21) Jumper Cables
 - Raspberry Pi 4B Rev. 1.2
 
 This project was possible through an electronics kit I purchased from Freenove that provided me
