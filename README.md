@@ -16,5 +16,13 @@ Hardware components used:
 - (21) Jumper Cables
 - Raspberry Pi 4B Rev. 1.2
 
+When compiling the code, run the following commands in terminal at the location of the file:
+
+```
+sudo bash
+g++ ServoJoystick.cpp -o ServoJoystick -lwiringPi -lADCDevice
+./ServoJoystick
+```
+
 This project was possible through an electronics kit I purchased from Freenove that provided me
 with all of the components I used. If interested, it is the "Freenove Ultrasonic Starter Kit for Raspberry Pi" (FNK0024).
