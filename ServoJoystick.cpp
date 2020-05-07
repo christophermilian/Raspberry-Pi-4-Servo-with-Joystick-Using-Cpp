@@ -32,18 +32,17 @@ int main(void){
     adc = new ADCDevice();
     printf("Looking for ADC Device.\n");
     
-    if(adc->detectI2C(0x48)){   // Detect the pcf8591.
+    if(adc->detectI2C(0x48)){   // Detect the PCF8591
         delete adc;             // Free previously pointed memory
         adc = new PCF8591();    // If detected, create an instance of PCF8591
     }
-    else if(adc->detectI2C(0x4b)){  // Detect the ads7830
+    else if(adc->detectI2C(0x4b)){  // Detect the ADS7830
         delete adc;                 // Free previously pointed memory
         adc = new ADS7830();        // If detected, create an instance of ADS7830
     }
     else{
         printf("No correct I2C address found, \n"
-        "Please use command 'i2cdetect -y 1' to check the I2C address! \n"
-        "Program Exit. \n");
+        "Please use command 'i2cdetect -y 1' to check the I2C address! \n");
         return -1;
     }
 
@@ -54,10 +53,8 @@ int main(void){
 
     while(1){
 
-        int val_Z = digitalRead(Z_Pin);  // Read digital value of axis Z
-        int val_Y = adc->analogRead(0);  // Read analog value of axis X and Y
-        int val_X = adc->analogRead(1);
-        printf("val_X: %d  ,\tval_Y: %d  ,\tval_Z: %d \n",val_X,val_Y,val_Z);
+        int val_Y = adc->analogRead(0);  // Read analog value of Y axis
+        printf("val_Y: %d \n",val_Y);
         val_Y = (val_Y/8);
         servoWriteMS(servoPin,val_Y);
     }
